@@ -7,6 +7,7 @@ const Login = () => {
   const [isSignInForm , setIsSignInForm] = useState(true);
   const [errorMessage , setErrorMessage] = useState(null);
 
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -17,10 +18,10 @@ const Login = () => {
   const handleButtonClick = () => {
     //validate the form data
     // checkValidData(email , password);
-    // console.log(email.current.value);
+    // console.log(email.current.value); 
     // console.log(password.current.value);
 
-    const message =  checkValidData(email.current.value , password.current.value);
+    const message =  checkValidData(email.current.value , password.current.value, name.current.value);
     console.log(message);
     setErrorMessage(message);
 
@@ -38,7 +39,7 @@ const Login = () => {
       <form onSubmit={(e) => e.preventDefault()} className='absolute w-3/12 p-8 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && (
-        <input type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-gray-700'/>
+        <input ref={name} type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-gray-700'/>
         )}
         <input ref={email} type='text' placeholder='Email Address' className='p-2 my-2 w-full bg-gray-700'/>
         <input ref={password} type='password' placeholder='Password' className='p-2 my-2 w-full bg-gray-700'/>
