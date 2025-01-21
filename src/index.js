@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // it may call the api twice so you can remove this
   <React.StrictMode>
     <App />
   </React.StrictMode>
